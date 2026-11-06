@@ -1,11 +1,15 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker, declarative_base
+from dotenv import load_dotenv
+
+load_dotenv()
 
 DATABASE_URL = URL.create(
     drivername="postgresql+psycopg",
     username="postgres",
-    password="mikaofficial@30",
+    password=os.getenv("DB_PASSWORD"),
     host="localhost",
     port=5432,
     database="library_management_db"
